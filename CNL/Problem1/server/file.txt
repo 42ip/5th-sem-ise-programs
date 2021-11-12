@@ -1,0 +1,7 @@
+This is the file that will be sent
+to view all current network port connections on linux, 
+we use
+>netstat -tulnp
+
+on macos, we use
+sudo lsof -iTCP -sTCP:LISTEN -n -P
