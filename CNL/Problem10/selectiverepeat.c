@@ -13,13 +13,14 @@
 // 12. Increment the frame count and repeat steps 7 to 12 until all packets are transmitted.
 // 13. Close the connection. 14. Stop.
 // Program
-#include<iostream.h>
-#include<stdio.h>
-#include<sys/types.h>
+
+#include <iostream.h>
+#include <stdio.h>
+#include <sys/types.h>
  
 #include<netinet/in.h> 
 #include<netdb.h>
-#define cls() printf(“33[H33[J”)
+#define cls() printf(“33[H33[J”);
 //structure definition for designing the packet.
 struct frame {
 int packet[40]; };

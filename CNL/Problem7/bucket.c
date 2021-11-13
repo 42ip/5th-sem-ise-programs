@@ -1,43 +1,39 @@
-// Program 7: Write a program to archive Traffic management at Flow level by implementing Leaky Bucket Algorithm.
-#include<stdio.h>
-#include<stdlib.h>
-#define MIN(x,y) (x>y)?y:x
+#include <stdio.h>
+#include <stdlib.h>
+
+#define min(x,y) x > y ? x : y
 int main()
 {
-int orate,drop=0,cap,x,count=0,
-inp[10]={0},i=0,nsec,ch;
-printf(" \n enter bucket size : ");
-scanf("%d",&cap);
-printf("\n enter output rate :");
-scanf("%d",&orate);
-do{
-printf("\n enter number of packets coming at second %d : ",i+1); scanf("%d",&inp[i]);
-i++;
-printf("\n enter 1 to contiue or 0 to quit.........."); scanf("%d",&ch);
-}while(ch);
-nsec=i;
-printf("\n second \t recieved \t sent \t dropped \t remained \n"); for(i=0;count || i<nsec;i++)
-{
-printf("%d",i+1);
-printf(" \t %d\t ",inp[i]);
-printf(" \t %d\t ",MIN((inp[i]+count),orate)); if((x=inp[i]+count-orate)>0)
-{
-if(x>cap)
-{
-count=cap;
-drop=x-cap;
-}
-else
-{
-count=x;
-drop=0;
-}
-}
-else
-{
-drop=0;
-count=0;
-}
-printf(" \t %d \t %d \n",drop,count); }
-return 0;
+    int inflow[10];
+    int bucketsize,outflow,input,i,recievedtill=0,remaining=0,sent=0,dropped=0;
+    printf("Enter the size of the bucket : ");
+    scanf("%d",&bucketsize);
+    printf("Enter the amount the bucket allows out at a time : ");
+    scanf("%d",&outflow);
+    i = 0;
+    do{
+        printf("Enter the size of the packet at second %d : ",i + 1);
+        scanf("%d",&inflow[i]);
+        i += 1;
+        printf("Do you have more inputs ? (0/1)"); scanf("%d",&input);
+    }while(input && i < 10);
+    recievedtill = i;
+    printf("Now showing the status of the bucket as it flows\n");
+    printf("Time\tRecieved\tSent\tDropped\tRemaining\n");
+    for(i = 0 ;  remaining || i < recievedtill; i++)
+    {
+        printf("%d\t%d\t\t",i+1,inflow[i]);
+        if (i < recievedtill)
+            remaining += inflow[i];
+        if (remaining > bucketsize)
+        {
+            dropped = remaining - bucketsize;
+            remaining = bucketsize;
+        }
+        sent = remaining < outflow ? remaining : outflow;
+        remaining = remaining < outflow ? 0 : remaining - outflow;
+        printf("%d\t%d\t%d\n",sent,dropped,remaining);
+        dropped = 0;
+    }
+
 }

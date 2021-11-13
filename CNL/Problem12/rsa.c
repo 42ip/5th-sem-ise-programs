@@ -5,7 +5,8 @@
 // ● Compute Z=(P-1) x (Q-1).
 // ● Choose an integer E, 1<E<Z, such that GCD (E, Z) = 1
 // ● Compute the secret exponent D, 1<D<Z, such that ExD ≡ 1(mod Z)
-#include<stdio.h> #include<math.h>
+#include<stdio.h>
+#include<math.h>
 //to find gcd
 int gcd(int a, int h) {
 int temp; while(1) {

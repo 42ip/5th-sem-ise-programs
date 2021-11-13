@@ -18,8 +18,7 @@ printf("Acknowledgement of above frames sent is received by sender\n\n");
 } else
 printf("%d ",frames[i]); }
 if(f%w!=0)
-printf("\nAcknowledgement of above frames sent is received by
-sender\n");
+printf("\nAcknowledgement of above frames sent is received by sender\n");
 return 0; }
 // Output:
 // Enter window size: 3
