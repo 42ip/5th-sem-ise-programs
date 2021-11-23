@@ -9,13 +9,13 @@ int checksum(int input){
     //  once the addition is done, convert that sum into hex form to get your check
     char inputString[100];
     // here sum is the calculated checksum.
-    int n,mid,sum = 0,inp2 =  0,temp,max;
+    int n,sum = 0,inp2 = 0,temp,max;
     printf("Enter the String:\n");
     scanf("%s",inputString);
     n = strlen(inputString);
     // got n as half
     n = (n % 2 == 0) ? n / 2 : (n + 1) / 2;
-    for(int i = 0; i < n; i ++)
+    for(int i = 0; i < n; i++)
     {
         temp = (256 * inputString[2 * i]) + inputString[(i * 2) + 1];
         sum = sum + temp;
@@ -36,7 +36,31 @@ int checksum(int input){
     sum  = max - 1 - sum; 
     return sum;
 }
+int checksumcopy(int choice){
+    char poly[20],inp[100];
+    int n = 0,sum=0,max=0b10000000000000000,checksum = 0;
+    printf("Enter the message: ");
+    scanf("%s",inp);
+    n = strlen(inp);
+    printf("%s %d \n",inp,n);
 
+    n = (n % 2 == 0) ? (n / 2 ): ((n + 1) / 2);
+    for(int i = 0; i < n; i++)
+    {
+            sum += (256 * inp[2 * i]) + inp[(i * 2) + 1];
+
+    }
+    if (choice)
+    {
+        printf("Enter checksum  : ");
+        scanf("%x",&checksum);
+        sum += checksum;
+    }
+    if (sum % max != 0){
+        sum = (sum / max) + (sum % max);
+    }
+    return max - 1 - sum;
+}
 
 int main()
 {   int input,val;
@@ -46,11 +70,11 @@ int main()
         switch (input)
         {
         case 1:
-            val = checksum(0);
+            val = checksumcopy(0);
             printf("Checksum is %x",val);
             break;
         case 2:
-            val = checksum(1);
+            val = checksumcopy(1);
             if (!val)
                 printf("No error in transmissions");
             else

@@ -120,7 +120,8 @@ void main()
         printf("Error Generated at %d th bit %d thcharacter\n",k,(k/8)+1);
     }
     divide(rcw,div,rem);
-    if(strcmp(rem,"0000000000000000")!=0)
+    printf("%s %s\n",rem,div);
+    if(strcmp(rem,"0000000000000000")!= 0)
         printf("\n\nErroneous Transmission detected!\n");
     // copy the error ridden message into rdw to convert it back to the ascii format.
     strncpy(rdw,rcw,strlen(rcw)-16); 

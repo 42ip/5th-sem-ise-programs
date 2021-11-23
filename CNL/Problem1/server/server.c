@@ -8,6 +8,7 @@
 
 #include<netinet/in.h>
 
+// unistd has the O_RDONLY constant
 #include<unistd.h>
 #include<fcntl.h>
 

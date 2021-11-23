@@ -4,7 +4,6 @@
 #define inf 999
 
 void dij(int n, int v, int cost[10][10],int dist[10]){
-            printf("Enter source node : ");
     int i, u, count, w, flag[10],min;
     for(i=1;i<=n;i++)
     {
